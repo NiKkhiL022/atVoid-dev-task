@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Super Water | Product Details</title>
   <meta name="description" content="Super Water Energy Drink - Grape Storm Flavor, 300ML">
   <link rel="stylesheet" href="css/style.css">
@@ -24,7 +24,7 @@
           <li class="nav__item"><a class="nav__link" href="#">Flavours</a></li>
           <li class="nav__item"><a class="nav__link" href="#">Story</a></li>
           <li class="nav__item"><a class="nav__link" href="#">About Us</a></li>
-          <li class="nav__item"><a class="nav__link" href="#">Contact</a></li>
+          <li class="nav__item"><a class="nav__link" href="architecture.html">Project Architecture</a></li>
         </ul>
         <button class="nav__search" aria-label="Search">
           <img src="assets/icons/search-icon.svg" alt="Search" class="nav__search-icon" />
@@ -40,20 +40,23 @@
         <li><a class="nav__link" href="#">Flavours</a></li>
         <li><a class="nav__link" href="#">Story</a></li>
         <li><a class="nav__link" href="#">About Us</a></li>
-        <li><a class="nav__link" href="#">Contact</a></li>
+        <li><a class="nav__link" href="architecture.html">Project Architecture</a></li>
       </ul>
-      <button class="nav__mobile-close" id="closeModal" aria-label="Close">&times;</button>
+      <button class="nav__mobile-close" id="closeModal" aria-label="Close menu">&times;</button>
     </div>
+    
     <main class="hero">
       <section class="hero__left">
-        <img src="assets/images/super-water-can.png" alt="Super Water Energy Drink" class="hero__product-img"/>
+        <img src="assets/images/super-water-can.png" alt="Super Water Energy Drink - Grape Storm flavor in 300ML can" class="hero__product-img" />
       </section>
+      
       <section class="hero__right">
         <h1 class="hero__title">GRAPE STORM</h1>
         <h2 class="hero__subtitle">300 ML</h2>
         <p class="hero__desc">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
         </p>
+        
         <div class="hero__packs">
           <div class="pack-option pack-option--selected">
             <img src="assets/images/pack-1.png" alt="Pack of 1" class="pack-option__img" />
@@ -68,26 +71,28 @@
             <span class="pack-option__desc">100gm Sachet</span>
           </div>
         </div>
+        
         <div class="hero__quantity">
-          <button class="quantity__btn" id="decrementBtn" type="button">-</button>
-          <span class="quantity__count" id="quantityCount">1</span>
-          <button class="quantity__btn" id="incrementBtn" type="button">+</button>
+          <button class="quantity__btn" id="decrementBtn" type="button" aria-label="Decrease quantity">-</button>
+          <span class="quantity__count" id="quantityCount" aria-live="polite">1</span>
+          <button class="quantity__btn" id="incrementBtn" type="button" aria-label="Increase quantity">+</button>
         </div>
-        <button class="hero__addcart">Add to Cart</button>
+        
+        <button class="hero__addcart" type="button">Add to Cart</button>
       </section>
     </main>
   </div>
 
   <section class="nutrition">
-  <div class="nutrition__container">
-    <h2 class="nutrition__title">NUTRITIONAL INFO</h2>
-    <div class="nutrition__main">
-      <img src="assets/images/calories-text.png" alt="Zero Sugar Calories" class="nutrition__zero-img" />
-      <div class="nutrition__zero-labels">
-        <span class="nutrition__sugarcalories">SUGAR<br>CALORIES</span>
+    <div class="nutrition__container">
+      <h2 class="nutrition__title">NUTRITIONAL INFO</h2>
+      <div class="nutrition__main">
+        <img src="assets/images/calories-text.png" alt="Zero Sugar Calories" class="nutrition__zero-img" />
+        <div class="nutrition__zero-labels">
+          <span class="nutrition__sugarcalories">SUGAR<br>CALORIES</span>
+        </div>
       </div>
-    </div>
-    <div class="nutrition__benefits">
+      <div class="nutrition__benefits">
       <div class="nutrition__benefit">
         <span class="nutrition__benefit-label">ENERGY<br>DRIVE</span>
         <img src="assets/icons/energy-drive.svg" alt="Energy Drive Icon" class="nutrition__benefit-icon" />
@@ -108,14 +113,14 @@
         <span class="nutrition__benefit-label">ENERGY<br>ALERTNESS</span>
         <img src="assets/icons/energy-alertness.svg" alt="Energy Alertness Icon" class="nutrition__benefit-icon" />
       </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="flavours">
-  <div class="flavours__container">
-    <h2 class="flavours__title">EXPLORE FLAVOURS</h2>
-    <div class="flavours__grid">
+    <section class="flavours">
+    <div class="flavours__container">
+      <h2 class="flavours__title">EXPLORE FLAVOURS</h2>
+      <div class="flavours__grid">
       <div class="flavour-card">
         <div class="flavour-card__image flavour-card__image--blue">
           <img src="assets/images/sweet-ice-tea.png" alt="Sweet Ice Tea" />
@@ -143,33 +148,31 @@
           <p class="flavour-card__price">$30.00</p>
         </div>
       </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="best-supers">
-  <div class="best-supers__container">
-    <img
-      src="assets/images/best-left.png"
-      alt="Grape Chrome Can"
-      class="best-supers__can best-supers__can--left"
-    />
-    <div class="best-supers__content">
-      <h2 class="best-supers__title">BEST SUPERS</h2>
-      <p class="best-supers__desc">
-        Take charge of your day, elevate your performance, and indulge in the refreshing flavors of Best SELLERS energy drinks.
-      </p>
-      <a href="#" class="best-supers__cta">Explore Now</a>
+    <section class="best-supers">
+    <div class="best-supers__container">
+      <img
+        src="assets/images/best-left.png"
+        alt="Grape Chrome Can"
+        class="best-supers__can best-supers__can--left"
+      />
+      <div class="best-supers__content">
+        <h2 class="best-supers__title">BEST SUPERS</h2>
+        <p class="best-supers__desc">
+          Take charge of your day, elevate your performance, and indulge in the refreshing flavors of Best SELLERS energy drinks.
+        </p>
+        <a href="#" class="best-supers__cta">Explore Now</a>
+      </div>
+      <img
+        src="assets/images/best-right.png"
+        alt="Red Chrome Can"
+        class="best-supers__can best-supers__can--right"
+      />
     </div>
-    <img
-      src="assets/images/best-right.png"
-      alt="Red Chrome Can"
-      class="best-supers__can best-supers__can--right"
-    />
-  </div>
-</section>
-
-
+  </section>
 
   <script src="js/script.js"></script>
 </body>
