@@ -1070,6 +1070,7 @@ a:focus {
   }
   .flavours__title { font-size: 1.5rem; margin-bottom: 18px; }
   .flavour-card__image { width: 320px; max-width: 90vw; height: 320px; }
+  .flavour-card__info { bottom: 20px; }
   .flavour-card__name { font-size: 14px;}
   .flavour-card__price { font-size: 0.93rem;}
   .flavours__grid { gap: 27px;}
