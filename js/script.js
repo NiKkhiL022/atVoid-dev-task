@@ -49,7 +49,25 @@ document.addEventListener('DOMContentLoaded', function() {
   const quantityCount = document.getElementById('quantityCount');
   let count = 1;
   
+  // Function to update button states
+  function updateButtonStates() {
+    if (count <= 1) {
+      decrementBtn.disabled = true;
+    } else {
+      decrementBtn.disabled = false;
+    }
+    
+    if (count >= 99) {
+      incrementBtn.disabled = true;
+    } else {
+      incrementBtn.disabled = false;
+    }
+  }
+  
   if (decrementBtn && incrementBtn && quantityCount) {
+    // Set initial state
+    updateButtonStates();
+    
     decrementBtn.addEventListener('click', () => {
       if (count > 1) {
         count--;
@@ -59,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
           quantityCount.style.transform = 'scale(1)';
         }, 200);
+        updateButtonStates();
       }
     });
     
@@ -71,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
           quantityCount.style.transform = 'scale(1)';
         }, 200);
+        updateButtonStates();
       }
     });
   }
