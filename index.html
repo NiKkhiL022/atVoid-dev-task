@@ -15,7 +15,7 @@
   <div class="product-page">
     <header class="header">
       <div class="header__logo">
-        <span class="header__logo-icon">⚡</span>
+        <img src="assets/images/logo.png" alt="Super Water Logo" class="header__logo-icon" />
         <span class="header__logo-text">SUPER<br>WATER</span>
       </div>
       <nav class="nav" aria-label="Main Navigation">
@@ -26,7 +26,9 @@
           <li class="nav__item"><a class="nav__link" href="#">About Us</a></li>
           <li class="nav__item"><a class="nav__link" href="#">Contact</a></li>
         </ul>
-        <button class="nav__search" aria-label="Search">&#128269;</button>
+        <button class="nav__search" aria-label="Search">
+          <img src="assets/icons/search-icon.svg" alt="Search" class="nav__search-icon" />
+        </button>
       </nav>
       <button class="nav__menu-btn" aria-label="Menu" id="menuBtn">
         &#9776;
@@ -75,6 +77,100 @@
       </section>
     </main>
   </div>
+
+  <section class="nutrition">
+  <div class="nutrition__container">
+    <h2 class="nutrition__title">NUTRITIONAL INFO</h2>
+    <div class="nutrition__main">
+      <img src="assets/images/calories-text.png" alt="Zero Sugar Calories" class="nutrition__zero-img" />
+      <div class="nutrition__zero-labels">
+        <span class="nutrition__sugarcalories">SUGAR<br>CALORIES</span>
+      </div>
+    </div>
+    <div class="nutrition__benefits">
+      <div class="nutrition__benefit">
+        <span class="nutrition__benefit-label">ENERGY<br>DRIVE</span>
+        <img src="assets/icons/energy-drive.svg" alt="Energy Drive Icon" class="nutrition__benefit-icon" />
+      </div>
+      <div class="nutrition__benefit">
+        <span class="nutrition__benefit-label">FOCUS<br>COGNITION</span>
+        <img src="assets/icons/focus-cognition.svg" alt="Focus Cognition Icon" class="nutrition__benefit-icon" />
+      </div>
+      <div class="nutrition__benefit">
+        <span class="nutrition__benefit-label">PERFORMANCE<br>ATHLETICISM</span>
+        <img src="assets/icons/performance-athleticism.svg" alt="Performance Athleticism Icon" class="nutrition__benefit-icon" />
+      </div>
+      <div class="nutrition__benefit">
+        <span class="nutrition__benefit-label">FOCUS<br>CREATIVITY</span>
+        <img src="assets/icons/focus-creativity.svg" alt="Focus Creativity Icon" class="nutrition__benefit-icon" />
+      </div>
+      <div class="nutrition__benefit">
+        <span class="nutrition__benefit-label">ENERGY<br>ALERTNESS</span>
+        <img src="assets/icons/energy-alertness.svg" alt="Energy Alertness Icon" class="nutrition__benefit-icon" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flavours">
+  <div class="flavours__container">
+    <h2 class="flavours__title">EXPLORE FLAVOURS</h2>
+    <div class="flavours__grid">
+      <div class="flavour-card">
+        <div class="flavour-card__image flavour-card__image--blue">
+          <img src="assets/images/sweet-ice-tea.png" alt="Sweet Ice Tea" />
+        </div>
+        <div class="flavour-card__info">
+          <p class="flavour-card__name">Sweet Ice Tea (355ml)</p>
+          <p class="flavour-card__price">$30.00</p>
+        </div>
+      </div>
+      <div class="flavour-card">
+        <div class="flavour-card__image flavour-card__image--green">
+          <img src="assets/images/grape-storm.png" alt="Grape Storm" />
+        </div>
+        <div class="flavour-card__info">
+          <p class="flavour-card__name">Grape Storm (355ml)</p>
+          <p class="flavour-card__price">$30.00</p>
+        </div>
+      </div>
+      <div class="flavour-card">
+        <div class="flavour-card__image flavour-card__image--red">
+          <img src="assets/images/red-storm.png" alt="Red Storm" />
+        </div>
+        <div class="flavour-card__info">
+          <p class="flavour-card__name">Red Storm (355ml)</p>
+          <p class="flavour-card__price">$30.00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="best-supers">
+  <div class="best-supers__container">
+    <img
+      src="assets/images/best-left.png"
+      alt="Grape Chrome Can"
+      class="best-supers__can best-supers__can--left"
+    />
+    <div class="best-supers__content">
+      <h2 class="best-supers__title">BEST SUPERS</h2>
+      <p class="best-supers__desc">
+        Take charge of your day, elevate your performance, and indulge in the refreshing flavors of Best SELLERS energy drinks.
+      </p>
+      <a href="#" class="best-supers__cta">Explore Now</a>
+    </div>
+    <img
+      src="assets/images/best-right.png"
+      alt="Red Chrome Can"
+      class="best-supers__can best-supers__can--right"
+    />
+  </div>
+</section>
+
+
+
   <script src="js/script.js"></script>
 </body>
 </html>
