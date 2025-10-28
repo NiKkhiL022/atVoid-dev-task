@@ -12,32 +12,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const mobileModal = document.getElementById('mobileModal');
   const closeModal = document.getElementById('closeModal');
   
-  if (menuBtn && mobileModal && closeModal) {
-    menuBtn.addEventListener('click', function() {
-      mobileModal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-    });
+  // Toggle mobile menu visibility
+  const toggleMobileMenu = (isOpen) => {
+    if (!mobileModal) return;
     
-    closeModal.addEventListener('click', function() {
+    if (isOpen) {
+      mobileModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    } else {
       mobileModal.classList.remove('active');
-      document.body.style.overflow = ''; // Restore scrolling
-    });
+      document.body.style.overflow = '';
+    }
+  };
+  
+  if (menuBtn && mobileModal && closeModal) {
+    menuBtn.addEventListener('click', () => toggleMobileMenu(true));
+    closeModal.addEventListener('click', () => toggleMobileMenu(false));
     
     // Close modal when clicking outside
     mobileModal.addEventListener('click', function(e) {
       if (e.target === mobileModal) {
-        mobileModal.classList.remove('active');
-        document.body.style.overflow = '';
+        toggleMobileMenu(false);
       }
     });
     
     // Close modal when clicking any nav link
     const mobileNavLinks = mobileModal.querySelectorAll('.nav__link');
     mobileNavLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        mobileModal.classList.remove('active');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', () => toggleMobileMenu(false));
     });
   }
   
@@ -47,54 +49,56 @@ document.addEventListener('DOMContentLoaded', function() {
   const decrementBtn = document.getElementById('decrementBtn');
   const incrementBtn = document.getElementById('incrementBtn');
   const quantityCount = document.getElementById('quantityCount');
-  let count = 1;
+  
+  const MIN_QUANTITY = 1;
+  const MAX_QUANTITY = 99;
+  let count = MIN_QUANTITY;
   
   // Function to update button states
-  function updateButtonStates() {
-    if (count <= 1) {
-      decrementBtn.disabled = true;
-    } else {
-      decrementBtn.disabled = false;
+  const updateButtonStates = () => {
+    if (decrementBtn) {
+      decrementBtn.disabled = (count <= MIN_QUANTITY);
     }
+    if (incrementBtn) {
+      incrementBtn.disabled = (count >= MAX_QUANTITY);
+    }
+  };
+  
+  // Function to animate quantity change
+  const animateQuantityChange = () => {
+    if (!quantityCount) return;
     
-    if (count >= 99) {
-      incrementBtn.disabled = true;
-    } else {
-      incrementBtn.disabled = false;
+    quantityCount.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+      quantityCount.style.transform = 'scale(1)';
+    }, 200);
+  };
+  
+  // Function to update quantity
+  const updateQuantity = (newCount) => {
+    if (newCount >= MIN_QUANTITY && newCount <= MAX_QUANTITY && quantityCount) {
+      count = newCount;
+      quantityCount.textContent = count;
+      animateQuantityChange();
+      updateButtonStates();
     }
-  }
+  };
   
   if (decrementBtn && incrementBtn && quantityCount) {
     // Set initial state
     updateButtonStates();
     
     decrementBtn.addEventListener('click', () => {
-      if (count > 1) {
-        count--;
-        quantityCount.textContent = count;
-        // Add animation effect
-        quantityCount.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-          quantityCount.style.transform = 'scale(1)';
-        }, 200);
-        updateButtonStates();
-      }
+      updateQuantity(count - 1);
     });
     
     incrementBtn.addEventListener('click', () => {
-      if (count < 99) { // Set max limit
-        count++;
-        quantityCount.textContent = count;
-        // Add animation effect
-        quantityCount.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-          quantityCount.style.transform = 'scale(1)';
-        }, 200);
-        updateButtonStates();
-      }
+      updateQuantity(count + 1);
     });
   }
   
+  // ==========================================
+  // PACK OPTION SELECTION
   // ==========================================
   // PACK OPTION SELECTION
   // ==========================================
@@ -118,14 +122,13 @@ document.addEventListener('DOMContentLoaded', function() {
     addToCartBtn.addEventListener('click', function() {
       // Get selected pack
       const selectedPack = document.querySelector('.pack-option--selected .pack-option__desc');
-      const selectedPackName = selectedPack ? selectedPack.textContent : 'Pack of 1';
+      const selectedPackName = selectedPack ? selectedPack.textContent.trim() : 'Pack of 1';
       
       // Show success message
       showNotification(`Added ${count} x ${selectedPackName} to cart!`);
       
       // Reset quantity to 1 after adding to cart
-      count = 1;
-      quantityCount.textContent = count;
+      updateQuantity(MIN_QUANTITY);
       
       // Add button animation
       this.style.transform = 'scale(0.95)';
@@ -145,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const href = this.getAttribute('href');
       
       // Only prevent default if it's an anchor link to an element
-      if (href.startsWith('#') && href.length > 1) {
+      if (href && href.startsWith('#') && href.length > 1) {
         const targetElement = document.querySelector(href);
         
         if (targetElement) {
@@ -188,8 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Close mobile menu with Escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && mobileModal && mobileModal.classList.contains('active')) {
-      mobileModal.classList.remove('active');
-      document.body.style.overflow = '';
+      toggleMobileMenu(false);
     }
   });
   
@@ -201,13 +203,15 @@ document.addEventListener('DOMContentLoaded', function() {
     rootMargin: '0px 0px -50px 0px'
   };
   
-  const observer = new IntersectionObserver(function(entries) {
+  const observerCallback = (entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('fade-in');
       }
     });
-  }, observerOptions);
+  };
+  
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
   
   // Observe elements for animation
   const animatedElements = document.querySelectorAll('.hero__title, .hero__subtitle, .hero__desc');
@@ -218,34 +222,36 @@ document.addEventListener('DOMContentLoaded', function() {
 // ==========================================
 // ADD NOTIFICATION STYLES DYNAMICALLY
 // ==========================================
-const style = document.createElement('style');
-style.textContent = `
-  .notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #b3ff35 0%, #75e620 100%);
-    color: #242724;
-    padding: 16px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(179, 255, 53, 0.3);
-    transform: translateX(400px);
-    transition: transform 0.3s ease;
-    z-index: 3000;
-    max-width: 300px;
-  }
-  
-  .notification--show {
-    transform: translateX(0);
-  }
-  
-  @media (max-width: 768px) {
+(function addNotificationStyles() {
+  const style = document.createElement('style');
+  style.textContent = `
     .notification {
-      left: 20px;
+      position: fixed;
+      top: 20px;
       right: 20px;
-      max-width: none;
+      background: linear-gradient(135deg, #b3ff35 0%, #75e620 100%);
+      color: #242724;
+      padding: 16px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(179, 255, 53, 0.3);
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+      z-index: 3000;
+      max-width: 300px;
     }
-  }
-`;
-document.head.appendChild(style);
+    
+    .notification--show {
+      transform: translateX(0);
+    }
+    
+    @media (max-width: 768px) {
+      .notification {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
