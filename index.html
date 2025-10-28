@@ -1,15 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>At Void Task USing Pure HTML & CSS
-
-    </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Super Water | Product Details</title>
+  <meta name="description" content="Super Water Energy Drink - Grape Storm Flavor, 300ML">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <h1 style="text-align: center;">Hello World</h1>
+  <div class="product-page">
+    <header class="header">
+      <div class="header__logo">
+        <span class="header__logo-icon">⚡</span>
+        <span class="header__logo-text">SUPER<br>WATER</span>
+      </div>
+      <nav class="nav" aria-label="Main Navigation">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="#">Shop</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Flavours</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Story</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">About Us</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Contact</a></li>
+        </ul>
+        <button class="nav__search" aria-label="Search">&#128269;</button>
+      </nav>
+      <button class="nav__menu-btn" aria-label="Menu" id="menuBtn">
+        &#9776;
+      </button>
+    </header>
+    <div class="nav__mobile-modal" id="mobileModal">
+      <ul class="nav__mobile-list">
+        <li><a class="nav__link" href="#">Shop</a></li>
+        <li><a class="nav__link" href="#">Flavours</a></li>
+        <li><a class="nav__link" href="#">Story</a></li>
+        <li><a class="nav__link" href="#">About Us</a></li>
+        <li><a class="nav__link" href="#">Contact</a></li>
+      </ul>
+      <button class="nav__mobile-close" id="closeModal" aria-label="Close">&times;</button>
     </div>
+    <main class="hero">
+      <section class="hero__left">
+        <img src="assets/images/super-water-can.png" alt="Super Water Energy Drink" class="hero__product-img"/>
+      </section>
+      <section class="hero__right">
+        <h1 class="hero__title">GRAPE STORM</h1>
+        <h2 class="hero__subtitle">300 ML</h2>
+        <p class="hero__desc">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        </p>
+        <div class="hero__packs">
+          <div class="pack-option pack-option--selected">
+            <img src="assets/images/pack-1.png" alt="Pack of 1" class="pack-option__img" />
+            <span class="pack-option__desc">Pack of 1</span>
+          </div>
+          <div class="pack-option">
+            <img src="assets/images/pack-5.png" alt="Pack of 5" class="pack-option__img" />
+            <span class="pack-option__desc">Pack of 5</span>
+          </div>
+          <div class="pack-option">
+            <img src="assets/images/pack-100gm.png" alt="100gm Sachet" class="pack-option__img" />
+            <span class="pack-option__desc">100gm Sachet</span>
+          </div>
+        </div>
+        <div class="hero__quantity">
+          <button class="quantity__btn" id="decrementBtn" type="button">-</button>
+          <span class="quantity__count" id="quantityCount">1</span>
+          <button class="quantity__btn" id="incrementBtn" type="button">+</button>
+        </div>
+        <button class="hero__addcart">Add to Cart</button>
+      </section>
+    </main>
+  </div>
+  <script src="js/script.js"></script>
 </body>
 </html>
