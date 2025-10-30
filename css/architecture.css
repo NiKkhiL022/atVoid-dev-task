@@ -211,6 +211,7 @@ body {
   color: #b3ff35;
   margin: 16px 0;
   line-height: 1.6;
+  scrollbar-width: none;
 }
 
 .code-example {
